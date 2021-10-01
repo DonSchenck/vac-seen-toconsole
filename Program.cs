@@ -41,8 +41,7 @@ namespace vac_seen_toconsole
                     var consumeResult = consumer.Consume(token);
                     // Deserialize result
                     VaccinationEvent ve = JsonConvert.DeserializeObject<VaccinationEvent>(consumeResult.Message.Value);
-                    Console.WriteLine(ve.VaccinationType);
-                    Console.WriteLine(ve.RecipientID);
+                    Console.WriteLine("Vaccination Type {0}", ve.VaccinationType);
                 }
 
                 consumer.Close();
