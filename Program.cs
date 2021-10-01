@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-//using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using KubeServiceBinding;
 
@@ -39,7 +39,10 @@ namespace vac_seen_toconsole
                 while (!cancelled)
                 {
                     var consumeResult = consumer.Consume(token);
-                    Console.WriteLine(consumeResult);
+                    // Deserialize result
+                    VaccinationEvent ve = JsonConvert.DeserializeObject<VaccinationEvent>(consumeResult.Message.Value);
+                    Console.WriteLine(ve.VaccinationType);
+                    Console.WriteLine(ve.RecipientID);
                 }
 
                 consumer.Close();

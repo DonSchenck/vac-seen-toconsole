@@ -1,6 +1,6 @@
 using System;
 
-namespace vac_seen_generator
+namespace vac_seen_toconsole
 {
    class VaccinationEvent
     {
