@@ -48,10 +48,12 @@ namespace vac_seen_toconsole
                     // Console.WriteLine("Shot Number: {0}", ve.ShotNumber);
                     // Console.WriteLine("---------------------");
                     vaxcount++;
+                    if (vaxcount == 100) {
+                        Console.WriteLine("{0} vaccinations counted.", vaxcount);
+                        vaxcount = 0;
+                    }
                 }
-                Console.WriteLine("{0} vaccinations counted.", vaxcount);
                 consumer.Close();
-                System.Threading.Thread.Sleep(45000);
             }
 
         }
