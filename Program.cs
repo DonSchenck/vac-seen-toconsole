@@ -25,7 +25,11 @@ namespace vac_seen_toconsole
             {
                 BootstrapServers = bindingsKVP["bootstrapservers"],
                 GroupId = "foo",
-                AutoOffsetReset = AutoOffsetReset.Earliest
+                AutoOffsetReset = AutoOffsetReset.Earliest,
+                SecurityProtocol = ToSecurityProtocol(bindingsKVP["securityProtocol"]),
+                SaslMechanism = SaslMechanism.Plain,
+                SaslUsername = bindingsKVP["user"],
+                SaslPassword = bindingsKVP["password"],
             };
 
             using (var consumer = new ConsumerBuilder<Ignore, string>(config).Build())
@@ -59,5 +63,21 @@ namespace vac_seen_toconsole
                 }
             }
         }
+        public static SecurityProtocol ToSecurityProtocol(string bindingValue) => bindingValue switch
+        {
+            "SASL_SSL"          => SecurityProtocol.SaslSsl,
+            "PLAIN"             => SecurityProtocol.Plaintext,
+            "SASL_PLAINTEXT"    => SecurityProtocol.SaslPlaintext,
+            "SSL"               => SecurityProtocol.Ssl,
+            _ => throw new ArgumentOutOfRangeException(bindingValue, $"Not expected SecurityProtocol value: {bindingValue}"),
+        };
+        public static SaslMechanism ToSaslMechanism(string bindingValue) => bindingValue switch
+        {
+            "GSSAPI"        => SaslMechanism.Gssapi,
+            "PLAIN"         => SaslMechanism.Plain,
+            "SCRAM-SHA-256" => SaslMechanism.ScramSha256,
+            "SCRAM-SHA-512" => SaslMechanism.ScramSha512,
+            _ => throw new ArgumentOutOfRangeException(bindingValue, $"Not expected SaslMechanism value: {bindingValue}"),
+        };        
     }
 }
