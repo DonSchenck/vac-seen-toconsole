@@ -51,6 +51,7 @@ namespace vac_seen_toconsole
                 }
                 Console.WriteLine("{0} vaccinations counted.", vaxcount);
                 consumer.Close();
+                System.Threading.Thread.Sleep(45000);
             }
 
         }
