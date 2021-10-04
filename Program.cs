@@ -51,14 +51,6 @@ namespace vac_seen_toconsole
  */                    vaxcount++;
                     if (vaxcount == 100) {
                         Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
-                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
-                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
-                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
-                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
-                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
-                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
-                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
-                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
                         vaxcount = 0;
                     }
                 }
