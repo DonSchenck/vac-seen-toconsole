@@ -41,6 +41,7 @@ namespace vac_seen_toconsole
                     var consumeResult = consumer.Consume(token);
                     // Deserialize result
                     VaccinationEvent ve = JsonConvert.DeserializeObject<VaccinationEvent>(consumeResult.Message.Value);
+                    Console.WriteLine("Message number {0}", vaxcount);
                     Console.WriteLine("RecipientID: {0}", ve.RecipientID);
                     Console.WriteLine("Vaccination Type: {0}", ve.VaccinationType);
                     Console.WriteLine("Timestamp: {0}", ve.EventTimestamp);
@@ -49,7 +50,15 @@ namespace vac_seen_toconsole
                     Console.WriteLine("---------------------");
                     vaxcount++;
                     if (vaxcount == 100) {
-                        Console.WriteLine("{0} vaccinations counted.", vaxcount);
+                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
+                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
+                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
+                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
+                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
+                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
+                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
+                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
+                        Console.WriteLine("{0} vaccinations counted. **************************************************************************", vaxcount);
                         vaxcount = 0;
                     }
                 }
